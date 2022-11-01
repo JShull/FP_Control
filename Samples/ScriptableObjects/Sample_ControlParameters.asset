@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4187f42b1a3baf49b5718a59798b00f, type: 3}
+  m_Name: Sample_ControlParameters
+  m_EditorClassIdentifier: 
+  WalkingSpeed: 5
+  RunningSpeed: 10
+  JumpSpeed: 1
+  JumpHeight: 5
+  GravityScale: 1
+  InAirJumpScale: 0.1
+  PlayerPosition:
+    x: 1
+    y: 10
+    z: 1
+  LookSpeed: 0.1
+  LookXLimit: 30
+  CapsuleRadius: 0.3
+  CapsuleHeight: 1
+  CanMove: 1
+  CanJump: 1
+  CanRun: 1
+  InverseLook: 1
+  DisableMouseLocking: 0
+  MoveWhileFalling: 0
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64

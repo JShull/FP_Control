@@ -1,0 +1,39 @@
+{
+    "name": "com.fuzzphyte.control",
+    "version": "0.1.0",
+    "displayName": "FP Control",
+    "description": "FP Control is a humble pattern that relies on the unity character controller to utilize a scriptable object to setup your 3D character controller - designed to be built around data.",
+    "unity": "2022.1",
+    "unityRelease": "21f1",
+    "documentationUrl": "https://github.com/jshull/FP_Control/README.md",
+    "changelogUrl": "https://github.com/jshull/FP_Control/CHANGELOG.md",
+    "licensesUrl": "https://github.com/jshull/FP_Control/LICENSE.md",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jshull/FP_Control.git"
+    },
+    "dependencies": {
+      "com.unity.test-framework": "1.1.31",
+      "com.unity.mathematics": "1.2.1",
+      "com.unity.inputsystem": "1.4.3"
+    },
+    "samples": [
+      {
+        "displayName": "Character Controller implemented with a monobehaviour class",
+        "description": "Includes a demo scene, monobehaviour class that works with the Controller class, and a couple different scriptable object examples",
+        "path": "Samples/"
+      }
+    ],
+    "keywords": [
+      "ScriptableObject",
+      "Character Controller",
+      "3D",
+      "Humble Pattern"
+    ],
+    "author": {
+      "name": "John Shull",
+      "email": "the.john.shull@gmail.com",
+      "url": "https://github.com/jshull"
+    },
+    "type": "tool"
+  }
