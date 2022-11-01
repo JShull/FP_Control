@@ -147,13 +147,13 @@ namespace FuzzPhyte.Control
             rotateX = Input.GetAxis("Mouse X");
             rotateY = Input.GetAxis("Mouse Y");
 #endif
-            Debug.LogWarning($"Values for Move:[X:{curMoveX},Z:{curMoveZ}], Jump: {isJumping}");
+            //Debug.LogWarning($"Values for Move:[X:{curMoveX},Z:{curMoveZ}], Jump: {isJumping}");
             _playerController.Move(curMoveX, curMoveZ, isJumping, isGrounded, isRunning, Time.deltaTime);
             _playerController.Rotate(new Vector2(rotateX, rotateY));
             if (Player.position.y > _maxH)
             {
                 _maxH = Player.position.y;
-                Debug.LogWarning($"Max Player Height:{_maxH}");
+                //Debug.LogWarning($"Max Player Height:{_maxH}");
             }
 #if ENABLE_INPUT_SYSTEM
             //ResetInputCommands();
