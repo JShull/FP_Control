@@ -19,9 +19,14 @@
     },
     "samples": [
       {
-        "displayName": "URPSample",
+        "displayName": "InputData",
+        "description": "Includes an example scriptable object and the input action maps for the newer Input System",
+        "path": "Samples~/InputData"
+      },
+      {
+        "displayName": "URPSamples",
         "description": "Includes a demo scene, monobehaviour class that works with the Controller class, and a couple different scriptable object examples",
-        "path": "Samples/"
+        "path": "Samples~/URPSamples"
       }
     ],
     "keywords": [
