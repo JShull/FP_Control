@@ -19,7 +19,7 @@
     },
     "samples": [
       {
-        "displayName": "Character Controller implemented with a monobehaviour class",
+        "displayName": "URPSample",
         "description": "Includes a demo scene, monobehaviour class that works with the Controller class, and a couple different scriptable object examples",
         "path": "Samples/"
       }
