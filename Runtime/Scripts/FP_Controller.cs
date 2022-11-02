@@ -124,13 +124,17 @@ namespace FuzzPhyte.Control
             jumpHeight = data.JumpHeight;
             radius = data.CapsuleRadius;
             CharacterControllerComponent.height = data.CapsuleHeight;
+            CharacterControllerComponent.center = data.CharacterCenter;
+            CharacterControllerComponent.slopeLimit = data.SlopeLimit;
+            CharacterControllerComponent.skinWidth = data.SkinWidth;
+            CharacterControllerComponent.stepOffset = data.StepOffset;
             moveWhileFalling = data.MoveWhileFalling;
             airJumpScale = data.InAirJumpScale;
             CharacterControllerComponent.radius = radius;
             PlayerPosition = data.PlayerPosition;
             rotationX = 0;
         }
-        private float _maxH = 0;
+        
         /// <summary>
         /// Used to get all inputs via new/old input manager system
         /// </summary>
@@ -147,16 +151,10 @@ namespace FuzzPhyte.Control
             rotateX = Input.GetAxis("Mouse X");
             rotateY = Input.GetAxis("Mouse Y");
 #endif
-            //Debug.LogWarning($"Values for Move:[X:{curMoveX},Z:{curMoveZ}], Jump: {isJumping}");
             _playerController.Move(curMoveX, curMoveZ, isJumping, isGrounded, isRunning, Time.deltaTime);
             _playerController.Rotate(new Vector2(rotateX, rotateY));
-            if (Player.position.y > _maxH)
-            {
-                _maxH = Player.position.y;
-                //Debug.LogWarning($"Max Player Height:{_maxH}");
-            }
+            
 #if ENABLE_INPUT_SYSTEM
-            //ResetInputCommands();
 #endif
         }
         public void FixedUpdate()

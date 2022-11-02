@@ -7,9 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2022-11-02
+
+### 0.2.0 Added
+
+- [@JShull](https://github.com/jshull)
+
+### 0.2.0 Changed
+
+- [@JShull](https://github.com/jshull)
+- Modified the Scriptable object to include all of the data for the Unity Character Controller
+
+### 0.2.0 Fixed
+
+- Removed some of the log messages leftover
+
 ## [0.1.0] - 2022-11-01
 
-### Added
+### 0.1.0 Added
 
 - [@JShull](https://github.com/jshull).
   - Moved all test files to a Unity Package Distribution
@@ -22,14 +37,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Scriptable Object setup to work with all other FuzzPhyte packages.
   - Added LICENSE.MD under a dual license for education and for business use cases
 
-### Changed
+### 0.1.0 Changed
 
 - None... yet
 
-### Fixed
+### 0.1.0 Fixed
 
 - Setup the contents to align with Unity naming conventions
 
-### Removed
+### 0.1.0 Removed
 
 - None... yet

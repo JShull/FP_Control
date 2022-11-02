@@ -24,6 +24,10 @@ namespace FuzzPhyte.Control
         [Header("Player Capsule Size")]
         public float CapsuleRadius=0.5f;
         public float CapsuleHeight=1f;
+        public Vector3 CharacterCenter = new Vector3(0, 0.5f, 0);
+        public float SlopeLimit = 45;
+        public float SkinWidth = 0.01f;
+        public float StepOffset = 0.1f;
         [Header("Misc")]
         public bool CanMove = true;
         public bool CanJump = false;
