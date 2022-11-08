@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2022-11-08
+
+### 0.3.0 Added
+
+- [@JShull](https://github.com/jshull)
+- The Scriptable object to include a boolean that allows you to ignore or set the player position from that data
+
+### 0.3.0 Changed
+
+- [@JShull](https://github.com/jshull)
+- Samples folder is now hidden
+- Adjusted namespace to better represent naming conventions
+
+### 0.3.0 Fixed
+
+- [@JShull](https://github.com/jshull)
+- asmdef file is now in the root samples folder to allow for additional samples later without messing with asmdef files
+- swapped the layers on the samples folder to include default unity layers, shouldn't have used custom layer names because Unity only provides 32 and this gets converted to an int which could cause confusion for newer unity users. Now just using Default and ignore raycast
+
 ## [0.2.0] - 2022-11-02
 
 ### 0.2.0 Added

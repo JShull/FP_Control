@@ -35,6 +35,7 @@ namespace FuzzPhyte.Control
         public bool InverseLook = false;
         public bool DisableMouseLocking = false;
         public bool MoveWhileFalling = false;
+        public bool MoveToDataStartPosition = false;
         [Header("LayerMasking Needs")]
         public LayerMask GroundLayerMask;
         //public QueryTriggerInteraction GroundLayerMask;

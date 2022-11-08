@@ -1,5 +1,5 @@
 {
-    "name": "FuzzPhyte Control Runtime",
+    "name": "com.fuzzphyte.control",
     "rootNamespace": "FuzzPhyte.Control",
     "references": [
         "GUID:d8b63aba1907145bea998dd612889d6b",

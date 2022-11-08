@@ -24,6 +24,7 @@ public interface IFPControl
     bool InverseLook { get; set; }
     bool DisableMouseLocking { get; set; }
     bool MoveWhileFalling { get; }
+    bool MoveToDataStartPosition { get; }
     Camera Camera { get; set; }
     Transform Player { get; set; }
     CharacterController CController { get; set; }

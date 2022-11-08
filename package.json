@@ -1,6 +1,6 @@
 {
     "name": "com.fuzzphyte.control",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "displayName": "FP Control",
     "description": "FP Control is a humble pattern that relies on the unity character controller to utilize a scriptable object to setup your 3D character controller - designed to be built around data.",
     "unity": "2022.1",
@@ -18,10 +18,16 @@
       "com.unity.inputsystem": "1.4.3"
     },
     "samples": [
+      
       {
-        "displayName": "Character Controller implemented with a monobehaviour class",
-        "description": "Includes a demo scene, monobehaviour class that works with the Controller class, and a couple different scriptable object examples",
-        "path": "Samples/"
+        "displayName": "Input Data Samples",
+        "description": "Please import this for all following other sample packages",
+        "path": "Samples~/InputData"
+      },
+      {
+        "displayName": "URP Monobehaviour Example",
+        "description": "Please make sure to import the 'Input Data Samples' first. Includes a demo scene, monobehaviour class that works with the Controller class, and a couple different scriptable object examples",
+        "path": "Samples~/URPSamples"
       }
     ],
     "keywords": [

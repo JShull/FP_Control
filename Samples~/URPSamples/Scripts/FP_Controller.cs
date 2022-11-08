@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using FuzzPhyte.Control;
 //If you're using the new input system
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 #endif
-namespace FuzzPhyte.Control
+namespace FuzzPhyte.Control.Examples
 {
     public class FP_Controller : MonoBehaviour, IFPControl
     {
+        public bool TestWith2D;
         [Tooltip("Assign the data for the controller via the Scriptable Object")]
         public SO_ControlParameters PlayerControlData;
         private PlayerController _playerController;
@@ -76,6 +78,8 @@ namespace FuzzPhyte.Control
         public bool CanRun { get { return canRun; } set { canRun = value; } }
         bool moveWhileFalling;
         public bool MoveWhileFalling { get { return moveWhileFalling; } }
+        bool useDataStartPosition;
+        public bool MoveToDataStartPosition { get { return useDataStartPosition; } }
         bool inverseLook;
         public bool InverseLook { get { return inverseLook; } set { inverseLook = value; } } 
         bool disableMouseLocking;
@@ -129,9 +133,17 @@ namespace FuzzPhyte.Control
             CharacterControllerComponent.skinWidth = data.SkinWidth;
             CharacterControllerComponent.stepOffset = data.StepOffset;
             moveWhileFalling = data.MoveWhileFalling;
+            useDataStartPosition = data.MoveToDataStartPosition;
             airJumpScale = data.InAirJumpScale;
             CharacterControllerComponent.radius = radius;
-            PlayerPosition = data.PlayerPosition;
+            if (useDataStartPosition)
+            {
+                PlayerPosition = data.PlayerPosition;
+            }
+            else
+            {
+                PlayerPosition = this.transform.position;
+            }
             rotationX = 0;
         }
         
@@ -151,8 +163,17 @@ namespace FuzzPhyte.Control
             rotateX = Input.GetAxis("Mouse X");
             rotateY = Input.GetAxis("Mouse Y");
 #endif
-            _playerController.Move(curMoveX, curMoveZ, isJumping, isGrounded, isRunning, Time.deltaTime);
-            _playerController.Rotate(new Vector2(rotateX, rotateY));
+            if (TestWith2D)
+            {
+                _playerController.Move(0, curMoveZ, isJumping, isGrounded, isRunning, Time.deltaTime);
+            }
+            else
+            {
+                _playerController.Move(curMoveX, curMoveZ, isJumping, isGrounded, isRunning, Time.deltaTime);
+                _playerController.Rotate(new Vector2(rotateX, rotateY));
+            }
+            
+            
             
 #if ENABLE_INPUT_SYSTEM
 #endif

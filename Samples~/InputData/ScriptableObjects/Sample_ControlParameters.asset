@@ -26,12 +26,17 @@ MonoBehaviour:
   LookXLimit: 30
   CapsuleRadius: 0.3
   CapsuleHeight: 1
+  CharacterCenter: {x: 0, y: 0.5, z: 0}
+  SlopeLimit: 45
+  SkinWidth: 0.01
+  StepOffset: 0.1
   CanMove: 1
   CanJump: 1
   CanRun: 1
   InverseLook: 1
   DisableMouseLocking: 0
   MoveWhileFalling: 0
+  MoveToDataStartPosition: 0
   GroundLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1
