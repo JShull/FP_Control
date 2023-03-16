@@ -7,9 +7,9 @@ namespace FuzzPhyte.Control
     /// </summary>
     public class PlayerController
     {
-        private IFPControl _control;
+        protected IFPControl _control;
         private const float defaultTime = 0.2f;
-        private Vector3 moveDirection = Vector3.zero;
+        protected Vector3 moveDirection = Vector3.zero;
         /// <summary>
         /// Constructor
         /// </summary>
@@ -18,13 +18,13 @@ namespace FuzzPhyte.Control
         {
             _control = control;
         }
-        private float jumpMoveX=0;
-        private float jumpMoveZ=0;
+        protected float jumpMoveX=0;
+        protected float jumpMoveZ=0;
         
-        private Vector3 forward;
-        private Vector3 right;
-        private Vector3 forwardJump;
-        private Vector3 rightJump;
+        protected Vector3 forward;
+        protected Vector3 right;
+        protected Vector3 forwardJump;
+        protected Vector3 rightJump;
 
         #region Actions/Systems
         /// <summary>
