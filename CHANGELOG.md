@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.0] - 2022-11-08
+## [0.4.0] - 2023-03-15
+
+### 0.3.5 Added
+
+- [@JShull](https://github.com/jshull)
+- Modified the PlayerController.cs script to allow for actual derived classes to take advantage of the private/protected variables
+
+### 0.3.5 Changed
+
+- [@JShull](https://github.com/jshull)
+- All private variables on PlayerController.cs are now protected
 
 ### 0.3.0 Added
 
