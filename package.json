@@ -1,6 +1,6 @@
 {
     "name": "com.fuzzphyte.control",
-    "version": "0.3.0",
+    "version": "0.3.5",
     "displayName": "FP Control",
     "description": "FP Control is a humble pattern that relies on the unity character controller to utilize a scriptable object to setup your 3D character controller - designed to be built around data.",
     "unity": "2022.1",
