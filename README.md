@@ -52,4 +52,3 @@ Please see the [package.json](./package.json) file for more information.
 ## Contact
 
 * [John Shull](mailto:the.john.shull@gmail.com)
-* [Twitter](https://twitter.com/TheJohnnyFuzz)
