@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.0] - 2023-03-15
+## [0.4.0] - 2023-11-12
+
+### 0.4.0 Changed
+
+- [@JShull](https://github.com/jshull)
+  - Cleaning up Samples Folder
+  - Correct References for URP
+  - Modified Package.json to match
+  - Modified *.asmdef to match requirements
+
+## [0.3.5] - 2023-03-15
 
 ### 0.3.5 Added
 
