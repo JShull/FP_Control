@@ -91,12 +91,14 @@ namespace FuzzPhyte.Control.Examples
         [Tooltip("Just a reference to the current player input actions")]
         public PlayerInput PlayerInputSystem;
 #endif
-        private bool _runPressed;
-        private bool _runReleased;
+        
         //public  Controls;
         private bool isRunning;
         private bool isJumping;
+        [SerializeField]
         private bool isGrounded;
+        [SerializeField]
+        private bool hitCeiling;
         private float curMoveX;
         private float curMoveZ;
         private float rotateX;
@@ -152,6 +154,10 @@ namespace FuzzPhyte.Control.Examples
         /// </summary>
         public void Update()
         {
+            //isGrounded = CheckGroundedRaycast();
+            isGrounded = CheckGroundSphere();
+            hitCeiling = CheckHeadCollisionRaycast();
+            
             //we assume new input system, if not then disable both and only enable the old one
 #if ENABLE_INPUT_SYSTEM
 
@@ -165,35 +171,62 @@ namespace FuzzPhyte.Control.Examples
 #endif
             if (TestWith2D)
             {
-                _playerController.Move(0, curMoveZ, isJumping, isGrounded, isRunning, Time.deltaTime);
+                _playerController.Move(0, curMoveZ, isJumping, isGrounded, isRunning, hitCeiling, Time.deltaTime);
             }
             else
             {
-                _playerController.Move(curMoveX, curMoveZ, isJumping, isGrounded, isRunning, Time.deltaTime);
+                moveDirection = _playerController.Move(curMoveX, curMoveZ, isJumping, isGrounded, isRunning, hitCeiling, Time.deltaTime);
                 _playerController.Rotate(new Vector2(rotateX, rotateY));
             }
+
             
-            
-            
+
 #if ENABLE_INPUT_SYSTEM
 #endif
         }
-        public void FixedUpdate()
+        
+        ////
+        ////
+
+        
+        //public LayerMask groundLayerMask; // Assign this in the editor with PlayerControlData.GroundLayerMask
+        //private CharacterController characterController;
+
+        
+
+        
+
+        bool CheckGroundedRaycast()
         {
-            //This only works if we are not colliding with ourselves - this is a super simple way to ground check but make sure
-            //your player and your ground are on different layers!!!
-            isGrounded = Physics.CheckSphere(CharacterControllerComponent.bounds.center,
-                (CharacterControllerComponent.height/2)+ CharacterControllerComponent.skinWidth*1.1f,
-                PlayerControlData.GroundLayerMask);
+            float length = (CharacterControllerComponent.height / 2f) + (CharacterControllerComponent.skinWidth * 1.1f);
+            bool isGrounded = Physics.Raycast(CharacterControllerComponent.bounds.center, Vector3.down, length, PlayerControlData.GroundLayerMask);
+
             
+            return isGrounded;
         }
-        #region New Unity Input Logic
+        bool CheckGroundSphere()
+        {
+            return Physics.CheckSphere(transform.position+new Vector3(0,radius-PlayerControlData.SkinWidth,0), radius, PlayerControlData.GroundLayerMask);
+        }
+
+        bool CheckHeadCollisionRaycast()
+        {
+            float length = (CharacterControllerComponent.height / 2f) + (CharacterControllerComponent.skinWidth * 1.1f);
+            bool isHittingHead = Physics.Raycast(CharacterControllerComponent.bounds.center, Vector3.up, length, PlayerControlData.GroundLayerMask);
+
+            return isHittingHead;
+        }
+    
+
+    ////
+    ///
+    #region New Unity Input Logic
 #if ENABLE_INPUT_SYSTEM
-        /// <summary>
-        /// Event Driven input for Running
-        /// </summary>
-        /// <param name="runningValue"></param>
-        public void OnRunning(InputValue runningValue)
+    /// <summary>
+    /// Event Driven input for Running
+    /// </summary>
+    /// <param name="runningValue"></param>
+    public void OnRunning(InputValue runningValue)
         {
             if (runningValue.Get<float>() > 0) {
                 isRunning = true;

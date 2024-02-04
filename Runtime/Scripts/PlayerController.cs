@@ -34,17 +34,18 @@ namespace FuzzPhyte.Control
         /// <param name="moveDirection">X is right, Y is up, & Z is forward, </param>
         /// <param name="jumping">Is the Jump Input being activated</param>
         /// <param name="running">Is the Run Input being activated</param>
+        /// <param name="ceiling">Are we hitting a ceiling?</param>
         /// <param name="updateTick">Update rate for this action, Time.deltaTime or Time.fixedDeltaTime or custom</param>
-        public virtual void Move(float moveX, float moveZ, bool jumping, bool grounded, bool running, float updateTick = defaultTime)
+        public virtual Vector3 Move(float moveX, float moveZ, bool jumping, bool grounded, bool running, bool ceiling=false, float updateTick = defaultTime)
         {
             if (_control.CanMove)
             {
                 forward = _control.Player.TransformDirection(Vector3.forward);
                 right = _control.Player.TransformDirection(Vector3.right);
                 //jump first
-                if (_control.CanJump && grounded && jumping)
+                if (_control.CanJump && grounded && jumping &&!ceiling)
                 {
-                    //force model for jumping by height with a scale adjustment for speed
+                    //force model for jumping by height with a scale adjustment for speed and accounting for skinwidth
                     moveDirection.y = Mathf.Sqrt(-2f * _control.JumpSpeed * (_control.JumpHeight - (3f * _control.CController.skinWidth)) * _control.GravityScale * Physics.gravity.y);
                     jumpMoveX = moveX;
                     jumpMoveZ = moveZ;
@@ -52,29 +53,60 @@ namespace FuzzPhyte.Control
                     rightJump = right;
                    
                 }
-                if (grounded)
+                //grounded and no head hit
+                //ground and head hit
+                //not grounded and not hit your head
+                //not grounded and hit your head
+                if (grounded &&!ceiling)
                 {
                     UpdateMove(running, moveX, moveZ);
+                    if (!jumping)
+                    {
+                        moveDirection.y = -1f;
+                    }
                     moveDirection = (forward * moveDirection.x) + new Vector3(0, moveDirection.y, 0) + (right * moveDirection.z);
                 }
                 else
                 {
-                    //apply gravity on fall if we aren't grounded
-                    moveDirection.y += _control.GravityScale * Physics.gravity.y*updateTick;
-                    if (!grounded && !_control.MoveWhileFalling)
+                    if (grounded && ceiling)
                     {
-                        UpdateMove(running, jumpMoveX, jumpMoveZ);
-                        moveDirection = (forwardJump * moveDirection.x) + new Vector3(0, moveDirection.y, 0) + (rightJump * moveDirection.z);
-                    }
-                    if (!grounded && _control.MoveWhileFalling)
-                    {
-                        UpdateMove(running, jumpMoveX+(moveX * _control.InAirMotionScale), jumpMoveZ+(moveZ* _control.InAirMotionScale));
+                        UpdateMove(running, moveX, moveZ);
+                        if (!jumping)
+                        {
+                            moveDirection.y = -1f;
+                        }
                         moveDirection = (forward * moveDirection.x) + new Vector3(0, moveDirection.y, 0) + (right * moveDirection.z);
                     }
+                    else
+                    {
+                        //if we hit a ceiling - zero out the moveDirection.y
+                        //this has to come before we apply "gravity" so we don't ceiling head run
+                        if (ceiling)
+                        {
+                            moveDirection.y = 0;
+                        }
+                        //apply gravity
+                        moveDirection.y += _control.GravityScale * Physics.gravity.y * updateTick;
+                        if (!grounded && !_control.MoveWhileFalling)
+                        {
+                            UpdateMove(running, jumpMoveX, jumpMoveZ);
+                            moveDirection = (forwardJump * moveDirection.x) + new Vector3(0, moveDirection.y, 0) + (rightJump * moveDirection.z);
+                        }
+                        if (!grounded && _control.MoveWhileFalling)
+                        {
+                            UpdateMove(running, jumpMoveX + (moveX * _control.InAirMotionScale), jumpMoveZ + (moveZ * _control.InAirMotionScale));
+                            moveDirection = (forward * moveDirection.x) + new Vector3(0, moveDirection.y, 0) + (right * moveDirection.z);
+                        }
+                    }
+                    
                 }
-                //apply to character controller 
+                //apply to character controller
+                //cap y moveDirection negative by physics scaler Times average terminal human velocity
+                moveDirection.y=Mathf.Clamp(moveDirection.y, -53 * _control.GravityScale, 1000f);
                 _control.CController.Move(moveDirection * updateTick);
+                return moveDirection;
             }
+            return Vector3.zero;
         }
         /// <summary>
         /// Generic X/Z Motion and movement

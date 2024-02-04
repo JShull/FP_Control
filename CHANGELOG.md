@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2024-2-4
+
+### 0.5.0 Changed
+
+- [@JShull](https://github.com/jshull)
+- PlayerController.cs
+  - The Move function now returns the move Vector3 data for debugging purposes
+  - the Move function has a ceiling boolean parameter now being passed to it, previous code should still work as by default it's set to false
+- URP Examples FP_Controller.cs
+  - Uses the updated PlayerController.cs Move Ceiling parameter to have the sample reflect an accurate ceiling collision
+
+### 0.5.0 Fixed
+
+- [@JShull](https://github.com/jshull)
+- Added in a ceiling check - this fixes the issue where players would jump and 'ground collide' with an item above them, ultimately being "stuck to the ceiling"
+- The user still needs to do these grounds/ceiling checks on the Unity side but when passed to the PlayerController it will correctly function as intended
+- Fixed an ever growing Y velocity on the move Vector being calculated by the PlayerController, this will now always reset to -1 if the player is grounded
+  - this has a cap now: terminal velocity for a human -53m a second by whatever the gravity scaler is and 1000f on the upper bounds
+  - this will fix the issue of if you have a player fall a great distance and not have you reach floating point hell
+
 ## [0.4.0] - 2023-11-12
 
 ### 0.4.0 Changed
