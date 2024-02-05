@@ -223,57 +223,104 @@ namespace FuzzPhyte.Control.Examples
     #region New Unity Input Logic
 #if ENABLE_INPUT_SYSTEM
     /// <summary>
-    /// Event Driven input for Running
-    /// </summary>
-    /// <param name="runningValue"></param>
-    public void OnRunning(InputValue runningValue)
-        {
-            if (runningValue.Get<float>() > 0) {
-                isRunning = true;
-            }
-            else
-            {
-                isRunning = false;
-            }
-           
-            //isRunning = movementValue.Get<bool>();
-        }
-        /// <summary>
-        /// We are screening the jump on the PlayerController so we can just contiously get this input
-        /// </summary>
-        /// <param name="jumpingValue"></param>
-        public void OnJumping(InputValue jumpingValue)
-        {
-            if (jumpingValue.Get<float>() > 0)
-            {
-                isJumping = true;
-            }
-            else
-            {
-                isJumping = false;
-            }
-        }
-        /// <summary>
-        /// Event Driven input for moving
-        /// forward, backward, left, right
-        /// </summary>
-        /// <param name="movementValue"></param>
-        public void OnMoving(InputValue movementValue)
-        {
-            Vector2 movementVector = movementValue.Get<Vector2>();
-            curMoveX = movementVector.y;
-            curMoveZ = movementVector.x; 
-        }
-        /// <summary>
-        /// Event Driven input for looking with mouse/touch screen
-        /// </summary>
-        /// <param name="lookValue"></param>
-        public void OnLooking(InputValue lookValue)
-        {
-            Vector2 lookV = lookValue.Get<Vector2>();
-            rotateX = lookV.x;
-            rotateY = lookV.y;
-        }
+/// Event Driven input for Running
+/// </summary>
+/// <param name="runningValue"></param>
+public void OnRunning(InputValue runningValue)
+{
+    if (runningValue.Get<float>() > 0)
+    {
+        isRunning = true;
+    }
+    else
+    {
+        isRunning = false;
+    }
+
+    //isRunning = movementValue.Get<bool>();
+}
+public void ContextRunning(InputAction.CallbackContext context)
+{
+    if (context.performed)
+    {
+        isRunning = true;
+    }
+    else
+    {
+        isRunning = false;
+    }
+}
+/// <summary>
+/// We are screening the jump on the PlayerController so we can just contiously get this input
+/// </summary>
+/// <param name="jumpingValue"></param>
+public void OnJumping(InputValue jumpingValue)
+{
+    if (jumpingValue.Get<float>() > 0)
+    {
+        isJumping = true;
+    }
+    else
+    {
+        isJumping = false;
+    }
+}
+/// <summary>
+/// 
+/// </summary>
+/// <param name="context"></param>
+public void ContextJumping(InputAction.CallbackContext context)
+{
+    if (context.performed)
+    {
+        isJumping = true;
+    }
+    else
+    {
+        isJumping = false;
+    }
+}
+/// <summary>
+/// Event Driven input for moving
+/// forward, backward, left, right
+/// </summary>
+/// <param name="movementValue"></param>
+public void OnMoving(InputValue movementValue)
+{
+    Vector2 movementVector = movementValue.Get<Vector2>();
+    curMoveX = movementVector.y;
+    curMoveZ = movementVector.x;
+}
+/// <summary>
+/// if we want to use context
+/// </summary>
+/// <param name="context"></param>
+public void ContextMoving(InputAction.CallbackContext context)
+{
+    Vector2 movementVector = context.ReadValue<Vector2>();
+    curMoveX = movementVector.y;
+    curMoveZ = movementVector.x;
+}
+/// <summary>
+/// Event Driven input for looking with mouse/touch screen
+/// </summary>
+/// <param name="lookValue"></param>
+public void OnLooking(InputValue lookValue)
+{
+    Vector2 lookV = lookValue.Get<Vector2>();
+    rotateX = lookV.x;
+    rotateY = lookV.y;
+}
+/// <summary>
+/// If we want to use Context
+/// </summary>
+/// <param name="context"></param>
+public void ContextLooking(InputAction.CallbackContext context)
+{
+    Vector2 lookV = context.ReadValue<Vector2>();
+    rotateX = lookV.x;
+    rotateY = lookV.y;
+}
 #endif
 #endregion
     }
