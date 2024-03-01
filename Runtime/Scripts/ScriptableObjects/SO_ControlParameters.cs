@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FuzzPhyte.Control
 {
     [Serializable]
-    [CreateAssetMenu(fileName = "ControlParameters",menuName = "ScriptableObjects/FuzzPhyte/Control/ControlParameters",order =0)]
+    [CreateAssetMenu(fileName = "ControlParameters",menuName = "FuzzPhyte/Control/ControlParameters",order =0)]
     public class SO_ControlParameters : ScriptableObject
     {
         [Header("Movement")]
