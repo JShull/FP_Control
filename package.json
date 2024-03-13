@@ -18,12 +18,12 @@
     },
     "samples": [
       {
-        "displayName": "Input Data Samples",
+        "displayName": "FP Control Samples",
         "description": "Please import this for all following other sample packages",
         "path": "Samples~/InputData"
       },
       {
-        "displayName": "URP Monobehaviour Example",
+        "displayName": "FP Control Samples URP",
         "description": "Please make sure to import the 'Input Data Samples' first. Includes a demo scene, monobehaviour class that works with the Controller class, and a couple different scriptable object examples",
         "path": "Samples~/URPSamples"
       }

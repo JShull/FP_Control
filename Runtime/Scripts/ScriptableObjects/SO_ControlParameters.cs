@@ -39,6 +39,17 @@ namespace FuzzPhyte.Control
         [Header("LayerMasking Needs")]
         public LayerMask GroundLayerMask;
         //public QueryTriggerInteraction GroundLayerMask;
+
+        public void Init()
+        {
+
+        }
+        public static SO_ControlParameters CreateInstance()
+        {
+            var data = ScriptableObject.CreateInstance<SO_ControlParameters>();
+            data.Init();
+            return data;
+        }
     }
 
 }

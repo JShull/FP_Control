@@ -168,6 +168,7 @@ namespace FuzzPhyte.Control.Examples
             curMoveZ = Input.GetAxis("Horizontal");
             rotateX = Input.GetAxis("Mouse X");
             rotateY = Input.GetAxis("Mouse Y");
+            Debug.Log($"RotateX: {rotateX} and {rotateY}");
 #endif
             if (TestWith2D)
             {

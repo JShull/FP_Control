@@ -22,7 +22,7 @@ MonoBehaviour:
     x: 1
     y: 10
     z: 1
-  LookSpeed: 0.1
+  LookSpeed: 1
   LookXLimit: 30
   CapsuleRadius: 0.3
   CapsuleHeight: 1

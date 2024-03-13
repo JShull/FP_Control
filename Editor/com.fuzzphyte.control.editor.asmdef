@@ -1,12 +1,15 @@
 {
-    "name": "com.fuzzphyte.control",
-    "rootNamespace": "FuzzPhyte.Control",
+    "name": "com.fuzzphyte.control.editor",
+    "rootNamespace": "FuzzPhyte.Control.Editor",
     "references": [
         "GUID:d8b63aba1907145bea998dd612889d6b",
+        "GUID:8729f3cadef284ac4bc6fd994d431e7a",
         "GUID:b2274f1409ce26f40919f89f9d4f667c",
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:3717f788ef57e425b845c5fb5abe782b"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": true,
     "overrideReferences": false,

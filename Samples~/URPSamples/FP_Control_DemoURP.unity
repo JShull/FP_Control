@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276788, g: 0.21589147, b: 0.29782534, a: 1}
+  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -318,7 +318,8 @@ MonoBehaviour:
   ThePlayer: {fileID: 288465505}
   ThePlayerCamera: {fileID: 1689854896}
   CharacterControllerComponent: {fileID: 288465503}
-  PlayerInputSystem: {fileID: 288465506}
+  PlayerInputSystem: {fileID: 0}
+  isGrounded: 0
   hitCeiling: 0
 --- !u!4 &288465505
 Transform:
@@ -364,7 +365,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Chromebook
   m_DefaultActionMap: MainPlayer
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -913,7 +914,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
